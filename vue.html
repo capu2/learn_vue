@@ -7,8 +7,19 @@
     <title>Hello World</title>
 </head>
 <body>
-    <div id="app">
-        {{ title }}
+    <div  id="app">
+        <div v-show="showTitle">
+            {{ title }}            
+        </div>
+        <div v-if="ifTitle">
+            {{ title }}            
+        </div>
+        <div v-else-if="showTitle2 " >
+            {{ title2 }} 
+        </div>
+        <div v-else >
+            Não tem título 
+        </div>
     </div>
      
     <script  src="https://unpkg.com/vue@3/dist/vue.global.js" ></script>
@@ -17,6 +28,10 @@
             data(){
                 return{
                     title: 'Hello World',
+                    title2: 'Hello Worlds',
+                    showTitle: true,
+                    showTitle2: true,
+                    ifTitle: false,
                 };
             },
         }).mount('#app')
