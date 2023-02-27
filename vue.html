@@ -5,34 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello World</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 </head>
 <body>
     <div id="app">
-       <h1>{{ title }}</h1> 
+        <div class="container mt-5">
+            <h1>{{ title }}</h1>
 
-       <ul>
-            <li v-for="(movie, index) in movies">
-                {{index}} - {{movie.name}} ({{movie.release}})
-            </li>
-       </ul>
-       
-        
+            <div :class="card">
+                <div class="card-body">
+                    JoJo no Kimyo na Boken(Jojo Bizarre Adventure (EUA) ou As Aventuras Bizarras de Jojo(Brasil))
+                    É um mangá escrito por Hirohiko Araki e publicado pela primeira vez em 1987 na revista Weekly Shonen Jump da Shueisha.                    
+
+                </div>
+            </div>
+    
+
+        </div>    
+     
+        <!-- <img v-bind:src="src" v-bind:alt="alt"> -->
+
     </div>
-
-
-
      
     <script  src="https://unpkg.com/vue@3/dist/vue.global.js" ></script>
     <script>
         Vue.createApp({
             data(){
                 return{
-                    title : 'Hello World',
-                    movies: [
-                        {name: 'Akira', release: '09/08/1991'},
-                        {name: 'Gandahar: Os anos de luz', release: '11/12/1987'},
-                        {name: 'Nausicaä do Vale do Vento', release: '25/12/1984'},
-                    ],
+                    title: 'Hello Jojo',
+                    // src:'https://via.placeholder.com/350',
+                    // alt: 'vue.js',
+                    card: [
+                        {
+                            'card':true,
+                        'bg-primary': true,
+                        'text-white': true
+                        }
+                    ], 
                 };
             },
         }).mount('#app')
