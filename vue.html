@@ -7,31 +7,32 @@
     <title>Hello World</title>
 </head>
 <body>
-    <div  id="app">
-        <div v-show="showTitle">
-            {{ title }}            
-        </div>
-        <div v-if="ifTitle">
-            {{ title }}            
-        </div>
-        <div v-else-if="showTitle2 " >
-            {{ title2 }} 
-        </div>
-        <div v-else >
-            Não tem título 
-        </div>
+    <div id="app">
+       <h1>{{ title }}</h1> 
+
+       <ul>
+            <li v-for="(movie, index) in movies">
+                {{index}} - {{movie.name}} ({{movie.release}})
+            </li>
+       </ul>
+       
+        
     </div>
+
+
+
      
     <script  src="https://unpkg.com/vue@3/dist/vue.global.js" ></script>
     <script>
         Vue.createApp({
             data(){
                 return{
-                    title: 'Hello World',
-                    title2: 'Hello Worlds',
-                    showTitle: true,
-                    showTitle2: true,
-                    ifTitle: false,
+                    title : 'Hello World',
+                    movies: [
+                        {name: 'Akira', release: '09/08/1991'},
+                        {name: 'Gandahar: Os anos de luz', release: '11/12/1987'},
+                        {name: 'Nausicaä do Vale do Vento', release: '25/12/1984'},
+                    ],
                 };
             },
         }).mount('#app')
