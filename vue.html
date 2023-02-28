@@ -13,11 +13,10 @@
             <h1>{{ title }}</h1>
 
             <div 
-                  v-bind="attrs"
+                :[attrname]="attrValue"
+                :class="card"
+                 
             >
-
-
-
 
 
                 <div class="card-body">
@@ -40,14 +39,11 @@
             data(){
                 return{
                     title: 'Hello Jojo',
-                    attrs:{
-                        id:'card',
-                        'data-row': 'teste', 
-                        class: [{'card':true, 'text-white': true }, 'bg-primary']
-                    },
                     // src:'https://via.placeholder.com/350',
                     // alt: 'vue.js',
-                   
+                    card: [{'card':true, 'text-white': true }, 'bg-primary'],
+                    attrname: 'id-card',
+                    attrValue: 'card',
                      
                 };
             },
