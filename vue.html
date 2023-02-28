@@ -12,12 +12,19 @@
         <div class="container mt-5">
             <h1>{{ title }}</h1>
 
-            <div :class="card">
-                <div class="card-body">
-                    JoJo no Kimyo na Boken(Jojo Bizarre Adventure (EUA) ou As Aventuras Bizarras de Jojo(Brasil))
-                    É um mangá escrito por Hirohiko Araki e publicado pela primeira vez em 1987 na revista Weekly Shonen Jump da Shueisha.                    
+            <div 
+                  v-bind="attrs"
+            >
 
-                </div>
+
+
+
+
+                <div class="card-body">
+                    <p> Jojo no Kimyo na Boken(Jojo Bizarre Adventure (EUA) ou As Aventuras Bizarras de Jojo(Brasil))
+                    É um mangá escrito por Hirohiko Araki e publicado pela primeira vez em 1987 na revista Weekly Shonen Jump da Shueisha.</p>                  
+
+                </div>  
             </div>
     
 
@@ -29,19 +36,19 @@
      
     <script  src="https://unpkg.com/vue@3/dist/vue.global.js" ></script>
     <script>
-        Vue.createApp({
+        const app = Vue.createApp({
             data(){
                 return{
                     title: 'Hello Jojo',
+                    attrs:{
+                        id:'card',
+                        'data-row': 'teste', 
+                        class: [{'card':true, 'text-white': true }, 'bg-primary']
+                    },
                     // src:'https://via.placeholder.com/350',
                     // alt: 'vue.js',
-                    card: [
-                        {
-                            'card':true,
-                        'bg-primary': true,
-                        'text-white': true
-                        }
-                    ], 
+                   
+                     
                 };
             },
         }).mount('#app')
