@@ -28,8 +28,11 @@
                                        type="text" 
                                        class="form-control" 
                                        v-model="firstName"
-                                
+                                     
                                 >
+                                       <!-- v-model.lazy -->
+                                       <!-- v-model.number -->
+                                       <!-- v-model.trim -->
                                 {{firstName}}
                                 <div class="invalid-feedback">
                                   Valid first name is required.
@@ -77,10 +80,11 @@
                   
                               <div class="col-md-5">
                                 <label for="country" class="form-label">Country</label>
-                                <select class="form-select" id="country" required>
+                                <select  v-model="country" class="form-select" id="country" >
                                   <option value="">Choose...</option>
                                   <option>United States</option>
                                 </select>
+                                {{country}}
                                 <div class="invalid-feedback">
                                   Please select a valid country.
                                 </div>
@@ -88,12 +92,13 @@
                   
                               <div class="col-md-4">
                                 <label for="state" class="form-label">State</label>
-                                <select class="form-select" id="state" required>
+                                <select v-model="state" class="form-select" id="state" >
                                   <option value="">Choose...</option>
                                   <option>California</option>
                                   <option>Detroit</option>
                                   <option>Denver</option>
                                 </select>
+                                {{state}}
                                 <div class="invalid-feedback">
                                   Please provide a valid state.
                                 </div>
@@ -173,6 +178,24 @@
                             </div>
 
                               {{interest}}
+                              <!-- Select Multiplos -->
+                              <hr class="my-4">
+
+                              <h4 class="mb-3">States</h4>
+                              <div class="col-md-4">
+                                <label for="state" class="form-label">States</label>
+                                <select v-model="states" class="form-select" multiple>
+                                  <option value="">Choose...</option>
+                                  <option>California</option>
+                                  <option>Detroit</option>
+                                  <option>Denver</option>
+                                </select>
+                                {{states}}
+                                <div class="invalid-feedback">
+                                  Please provide a valid state.
+                                </div>
+                              </div>
+
                             <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
                           </form>
                      
@@ -204,7 +227,8 @@
                     interest: [],
                     payment: '',
                     country: '',
-                    state: ''
+                    state: '',
+                    states: ''
                                       
                 };
             },
