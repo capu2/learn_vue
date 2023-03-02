@@ -9,15 +9,12 @@
 </head>
 <body>
     <div id="app">
-        <div class="container mt-5">
-            <div class="mx-auto" style="width: 200px;">
-                <div class="input-group">
-                    <button class="btn btn-outline-secondary" type="button" @click="remove(2)">-</button>
-                    <input v-model="counter" type="text" :value="counter" class="form-control text-center">
-                    <button class="btn btn-outline-secondary" type="button" @click="add(5)">+</button>
-                </div>
+            <h1>{{title}}</h1>
+            <div @click.self="divClick">
+                <a  @click.stop.prevent="clickLink" href="http://www.google.com">Link</a>
+                <!-- chama apenas uma vez "once" -->
             </div>
-        </div>
+         
     </div>
      
     <script  src="https://unpkg.com/vue@3/dist/vue.global.js" ></script>
@@ -25,22 +22,17 @@
         const app = Vue.createApp({
             data(){
                 return{
-                    counter: 0,
+                   title:"Hello Jojo",
                 };
             },
             methods: {
-                
-                   add(number){
-                    this.counter+=number;
-                   },
-                   remove(number){
-                        if(this.counter <=0){
-                            this.counter=0;
-                        }else{
-                            this.counter-=number;
-                        }
-                   },
-                  
+                clickLink(){
+                    alert('Clicou no link');
+                },
+                divClick(){
+                    alert('Clicou na div');
+                }
+                                    
             },
 
         }).mount('#app')
