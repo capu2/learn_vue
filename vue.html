@@ -10,206 +10,14 @@
 <body>
     <div id="app">
         <div class="container mt-5">
-            <h1>{{ title }}</h1>
-
-            <div class="card shadow" >
-                <div class="card-body">
-                                      
-                     <div class="mb-3">
-                        
-                     
-                        <div class="">
-                          <h4 class="mb-3">Billing address</h4>
-                          <form class="needs-validation" novalidate>
-                            <div class="row g-3">
-                              <div class="col-sm-6">
-                                <label for="firstName" class="form-label">First name</label>
-                                <input
-                                       type="text" 
-                                       class="form-control" 
-                                       v-model="firstName"
-                                     
-                                >
-                                       <!-- v-model.lazy -->
-                                       <!-- v-model.number -->
-                                       <!-- v-model.trim -->
-                                {{firstName}}
-                                <div class="invalid-feedback">
-                                  Valid first name is required.
-                                </div>
-                              </div>
-                  
-                              <div class="col-sm-6">
-                                <label for="lastName" class="form-label">Last name</label>
-                                <input type="text" 
-                                       class="form-control" 
-                                       v-model="lastName" 
-                                >
-                                {{lastName}}
-                                <div class="invalid-feedback">
-                                  Valid last name is required.
-                                </div>
-                              </div>                  
-                             
-                  
-                              <div class="col-12">
-                                <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                                <input type="email" 
-                                       class="form-control" 
-                                       v-model="email"
-                                       >
-                                       {{email}}
-                                <div class="invalid-feedback">
-                                  Please enter a valid email address for shipping updates.
-                                </div>
-                              </div>
-                  
-                              <div class="col-12">
-                                <label for="address" class="form-label">Address</label>
-                                <input type="text" 
-                                       class="form-control" 
-                                       v-model="address"
-                                       >
-                                       {{address}}
-                                <div class="invalid-feedback">
-                                  Please enter your shipping address.
-                                </div>
-                              </div>
-                  
-                             
-                  
-                              <div class="col-md-5">
-                                <label for="country" class="form-label">Country</label>
-                                <select  v-model="country" class="form-select" id="country" >
-                                  <option value="">Choose...</option>
-                                  <option>United States</option>
-                                </select>
-                                {{country}}
-                                <div class="invalid-feedback">
-                                  Please select a valid country.
-                                </div>
-                              </div>
-                  
-                              <div class="col-md-4">
-                                <label for="state" class="form-label">State</label>
-                                <select v-model="state" class="form-select" id="state" >
-                                  <option value="">Choose...</option>
-                                  <option>California</option>
-                                  <option>Detroit</option>
-                                  <option>Denver</option>
-                                </select>
-                                {{state}}
-                                <div class="invalid-feedback">
-                                  Please provide a valid state.
-                                </div>
-                              </div>
-                  
-                              <div class="col-md-3">
-                                <label for="zip" class="form-label">Zip</label>
-                                <input type="text" 
-                                       class="form-control"
-                                       v-model="zip" 
-                                >
-                                {{zip}}
-                                <div class="invalid-feedback">
-                                  Zip code required.
-                                </div>
-                              </div>
-                            </div>
-                  
-                            <hr class="my-4">
-                  
-                            <div class="form-check">
-                              <input type="checkbox" class="form-check-input" v-model="add">
-                              <label class="form-check-label" for="same-address">Shipping address is the same as my billing address</label>
-                            </div>
-                            {{add}}
-                            
-                  
-                            <hr class="my-4">
-                  
-                            <h4 class="mb-3">Payment</h4>
-                  
-                            <div class="my-3">
-                              <div class="form-check">
-                                <input v-model="payment" value="BattleTendency" type="radio" class="form-check-input"  >
-                                <label class="form-check-label" for="credit">Battle Tendency</label>
-                              </div>
-                              <div class="form-check"> 
-                                <input v-model="payment" type="radio" value="StardustCruzaders" class="form-check-input"  >
-                                <label class="form-check-label" for="debit">Stardust Cruzaders</label>
-                              </div>
-                              <div class="form-check">
-                                <input v-model="payment" type="radio" value="StoneOcean" class="form-check-input"  >
-                                <label class="form-check-label" for="paypal">Stone Ocean</label>
-                              </div>
-                            </div>
-                            {{payment}}
-                           
-                  
-                            <hr class="my-4">
-
-                            <h4 class="mb-3">Message</h4>
-
-                            <div class="my-3">                                
-                                    <textarea 
-                                        class="form-control" 
-                                        v-model="message"
-                                    >
-                                    </textarea>  
-                                    <span style="white-space: pre-line;">{{message}} </span>                                 
-                            </div>
-
-
-                            <!-- Multiplos checkbox -->
-                            <div  class="form-check">
-                                <input type="checkbox" class="form-check-input" v-model="interest" value="Phantom Blood">
-                                <label class="form-check-label" for="same-address">Phantom Blood</label>
-                            </div>
-                            
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" v-model="interest" value="Golden Wind">
-                                <label class="form-check-label" for="same-address">Golden Wind</label>
-                            </div>
-                           
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" v-model="interest" value="Dimond is Unbrakable">
-                                <label class="form-check-label" for="same-address">Dimond is Unbrakable</label>
-                            </div>
-
-                              {{interest}}
-                              <!-- Select Multiplos -->
-                              <hr class="my-4">
-
-                              <h4 class="mb-3">States</h4>
-                              <div class="col-md-4">
-                                <label for="state" class="form-label">States</label>
-                                <select v-model="states" class="form-select" multiple>
-                                  <option value="">Choose...</option>
-                                  <option>California</option>
-                                  <option>Detroit</option>
-                                  <option>Denver</option>
-                                </select>
-                                {{states}}
-                                <div class="invalid-feedback">
-                                  Please provide a valid state.
-                                </div>
-                              </div>
-
-                            <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
-                          </form>
-                     
-                     </div>
-                        
-
-                </div>  
+            <div class="mx-auto" style="width: 200px;">
+                <div class="input-group">
+                    <button class="btn btn-outline-secondary" type="button" @click="remove(2)">-</button>
+                    <input v-model="counter" type="text" :value="counter" class="form-control text-center">
+                    <button class="btn btn-outline-secondary" type="button" @click="add(5)">+</button>
+                </div>
             </div>
-    
-
-        </div>    
-     
-        <!-- <img v-bind:src="src" v-bind:alt="alt"> -->
-
+        </div>
     </div>
      
     <script  src="https://unpkg.com/vue@3/dist/vue.global.js" ></script>
@@ -217,21 +25,24 @@
         const app = Vue.createApp({
             data(){
                 return{
-                    firstName: "",
-                    lastName: "",
-                    email: "",
-                    address: "",
-                    zip: "",
-                    message: "",
-                    add: false,
-                    interest: [],
-                    payment: '',
-                    country: '',
-                    state: '',
-                    states: ''
-                                      
+                    counter: 0,
                 };
             },
+            methods: {
+                
+                   add(number){
+                    this.counter+=number;
+                   },
+                   remove(number){
+                        if(this.counter <=0){
+                            this.counter=0;
+                        }else{
+                            this.counter-=number;
+                        }
+                   },
+                  
+            },
+
         }).mount('#app')
     </script>
 
