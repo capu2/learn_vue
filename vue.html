@@ -10,10 +10,7 @@
 <body>
     <div id="app">
             <h1>{{title}}</h1>
-            <div @click.self="divClick">
-                <a  @click.stop.prevent="clickLink" href="http://www.google.com">Link</a>
-                <!-- chama apenas uma vez "once" -->
-            </div>
+            <input type="text" @keyup="onKeyup">
          
     </div>
      
@@ -24,16 +21,12 @@
                 return{
                    title:"Hello Jojo",
                 };
-            },
+            },     
             methods: {
-                clickLink(){
-                    alert('Clicou no link');
-                },
-                divClick(){
-                    alert('Clicou na div');
+                onKeyup($event){
+                    console.log('onKeyup', $event);
                 }
-                                    
-            },
+            },    
 
         }).mount('#app')
     </script>
