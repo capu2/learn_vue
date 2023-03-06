@@ -9,26 +9,76 @@
 </head>
 <body>
     <div id="app">
-            <h1>{{title}}</h1>
-            <input type="text" @keyup="onKeyup">
+           <div class="container mt-5">
+                <div class="mx-auto" style="width: 400px;">
+                   <jojo_card></jojo_card>
+
+                   <jojo_card></jojo_card>
+
+                  
+                </div>
+           </div>
+           
          
     </div>
+
+    <template id="jojo_card">
+        <div class="card shadow-sm">
+            <image-card></image-card>
+            <div class="card-body">
+                <description-card></description-card>
+                <card-actions></card-actions>
+            </div>
+        </div>
+    </template>
+
+    <template id="image"> 
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+    </template>
+    
+    <template id="description">
+        <p class="card-text">Bla bla bla JoJo</p>
+    </template>
+
+    <template id="actions">
+        <div class="d-flex justify-content-end align-items-center">
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+            </div>            
+        </div>
+    </template>
      
     <script  src="https://unpkg.com/vue@3/dist/vue.global.js" ></script>
     <script>
         const app = Vue.createApp({
             data(){
                 return{
-                   title:"Hello Jojo",
+                 
                 };
             },     
-            methods: {
-                onKeyup($event){
-                    console.log('onKeyup', $event);
-                }
-            },    
+             
 
-        }).mount('#app')
+        })
+        app.component('jojo_card', {
+            data(){
+                return{
+                    
+                };
+            },
+            template: '#jojo_card'
+        });        
+        app.component('image-card',{
+            template:'#image'
+        });
+        app.component('description-card',{
+            template: '#description'
+        });
+        app.component('card-actions',{
+            template: '#actions' 
+        })
+        app.mount('#app');
+
     </script>
 
 </body>
