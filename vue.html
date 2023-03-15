@@ -11,40 +11,29 @@
     <div id="app">
            <div class="container mt-5">
                 <div class="mx-auto" style="width: 400px;">
-                   <jojo_card v-for="post in posts" :post="post"></jojo_card>
+                    {{firstName}} <br>
+                    {{lastName}}
+                    <search-user
+                        v-model:first-name="firstName" 
+                        v-model:last-name="lastName">
+                    </search-user>
                 </div>
            </div>
            
          
     </div>
 
-    <template id="jojo_card">
-       
+    <template id="searchUser">     
         <div class="card shadow-sm">
-            <!-- <img :src="cardImage" alt=""> -->
-
-            <image-card :image="post.image"></image-card>
             <div class="card-body">
-                <description-card :description="post.description"></description-card>
-                <card-actions :view="post.view"  :edit="post.edit" ></card-actions>
+                <div class="input-group mb-3">   
+                    {{firstName}} <br>
+                    {{lastName}}                 
+                    <input type="text" class="form-control" placeholder="Nome">
+                    <input type="text" class="form-control" placeholder="Sobrenome">
+                    <button class="btn btn-outline-secondary" type="button" @click="search" >Pesquisar</button>
+                  </div>
             </div>
-        </div>
-    </template>
-
-    <template id="image"> 
-       <img :src="image" alt="">
-    </template>
-    
-    <template id="description">
-       {{description}}
-    </template>
-
-    <template id="actions">
-        <div class="d-flex justify-content-end align-items-center">
-            <div class="btn-group">
-                <button v-if="view" type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                <button v-if="edit" type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-            </div>            
         </div>
     </template>
      
@@ -53,38 +42,25 @@
         const app = Vue.createApp({
             data(){
                 return{
-                    posts:[
-                        { description: 'Descrição 1', image: 'http://via.placeholder.com/300x150', view:true, edit:false},
-                        { description: 'Descrição 2', image: 'http://via.placeholder.com/300x150', view:false, edit:true},
-                        { description: 'Descrição 3', image: 'http://via.placeholder.com/300x150', view:true, edit:true },
-                        { description: 'Descrição 4', image: 'http://via.placeholder.com/300x150', view:false, edit:true },
-                        { description: 'Descrição 5', image: 'http://via.placeholder.com/300x150', view:true, edit:false},
-                    ],
+                    firstName: 'Jon',
+                    lastName:'Doe',
                 };
-            },     
-             
-
-        })
-        app.component('jojo_card', {
+            },
            
-            template: '#jojo_card',
+        });
 
-            props:['post']
-        });        
-        app.component('image-card',{
-            template:'#image',
-            props: ['image']
+        app.component('search-user', {
+            template: '#searchUser',
+            props: ['firstName', 'lastName'],
+            data(){
+                return{
+                   
+                };
+            },
+           
         });
-        app.component('description-card',{
-            template: '#description',
-            props: ['description'],
-        });
-        app.component('card-actions',{
-            template: '#actions',
-            props:['view', 'edit'] 
-        })
+        
         app.mount('#app');
-
     </script>
 
 </body>
